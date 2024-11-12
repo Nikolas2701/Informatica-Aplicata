@@ -25,6 +25,7 @@
                 height: auto;
                 border-radius: 8px;
                 margin-right: 15px;
+                transition: opacity 0.5s, border 0.5s;
             }
 
         .info p {
@@ -78,14 +79,31 @@
             text-decoration: none;
             font-weight: bold;
         }
+
+        
+        .button {
+            padding: 10px 20px;
+            background-color: #FF6347; 
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 20px;
+        }
+
+        .button:hover {
+            background-color: #FF4500;
+        }
+
     </style>
 </head>
 <body>
 
     <div class="header">
-        <img src="D:\CV\stitch.jpg" alt="Poza Profil">
+        <img id="profilImage" src="stitch.jpg" alt="Poza Profil">
         <div class="info">
-            <p><strong>Nume si Prenume:</strong> Tamas Nikolas</p>
+            <p id="numePrenume"><strong>Nume si Prenume:</strong> Tamas Nikolas</p>
             <p><strong>Email:</strong> nikolas20052701@gmail.com</p>
         </div>
     </div>
@@ -103,7 +121,7 @@
         </ul>
     </div>
 
-    <div class="disciplina">
+    <div class="hobby">
         <h2>Hobby-uri</h2>
         <ul class="b">
             <li>Gaming</li>
@@ -111,6 +129,51 @@
             <li>Vizionat Anime-uri</li>
         </ul>
     </div>
+
+    <!-- Butonul pentru schimbare -->
+    <button class="button" onclick="schimbaViata()">Alta viata</button>
+
+    <script>
+        function schimbaViata() {
+            
+            document.getElementById('numePrenume').innerHTML = "<strong>Poziția visată:</strong> Dezvoltator Software Junior la EA Romania";
+
+            document.querySelector('.citat p').innerHTML = "<strong>Citat inspirational:</strong> “Viitorul apartine celor care cred in frumusețea viselor lor.”";
+
+            document.getElementById('profilImage').src = "Stitch2.jpg"; 
+            document.getElementById('profilImage').style.opacity = 0.7;
+            document.getElementById('profilImage').style.border = "5px solid #FF6347"; 
+
+            document.querySelector('.disciplina ul.a').innerHTML = `
+                <li><a href="#">Dezvoltare de jocuri Video</a></li>
+                <li><a href="#">Implementare nivel ridicat AI</a></li>
+                <li><a href="#">Creare de aplicatii</a></li>
+            `;
+			document.querySelector('.hobby ul.b').innerHTML = `
+                <li><a href="#">Calatorie in locuri exotice</a></li>
+                <li><a href="#">Participare la turnee de Jocuri video</a></li>
+                <li><a href="#">Construirea Calculatoarelor</a></li>
+				;
+
+            document.body.style.backgroundColor = "#2F4F4F"; 
+            document.body.style.color = "#FFFFFF";
+
+            var titluri = document.querySelectorAll('.disciplina h2');
+            titluri.forEach(function(titlu) {
+                titlu.style.color = "#FF6347";
+				  var titluri = document.querySelectorAll('.hobby h2');
+            titluri.forEach(function(titlu) {
+                titlu.style.color = "#FF6347";
+            });
+
+            // Schimbarea stilurilor pentru liste
+            document.querySelectorAll('ul.a, ul.b').forEach(function(lista) {
+                lista.style.backgroundColor = "#2F4F4F"; 
+                lista.style.color = "#FFFFFF"; 
+                lista.style.border = "2px solid #FF6347";
+            });
+        }
+    </script>
 
 </body>
 </html>
