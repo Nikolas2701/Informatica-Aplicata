@@ -6,7 +6,7 @@
     <title>Profil Personalizat</title>
     <style>
         body {
-            background-color: #800080; 
+            background-color: #800080;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -16,7 +16,7 @@
             display: flex;
             align-items: center;
             padding: 20px;
-            background-color: #000000; 
+            background-color: #000000;
             color: #FFFFFF;
         }
 
@@ -32,18 +32,9 @@
             margin: 5px 0;
         }
 
-        .citat {
-            color: #000000; 
-            background-color: #A3A3A3; 
-            padding: 10px;
-            border-radius: 8px;
-            margin: 20px;
-            text-align: center;
-        }
-
-        .disciplina {
-            color: #FFFFFF; 
-            background-color: #800080; 
+        .citat, .disciplina, .hobby, .email-input {
+            color: #FFFFFF;
+            background-color: #800080;
             padding: 10px;
             border-radius: 8px;
             margin: 20px;
@@ -52,7 +43,7 @@
 
         ul.a, ul.b {
             padding: 10px;
-            border: 2px solid #A3A3A3; 
+            border: 2px solid #A3A3A3;
             border-radius: 8px;
             margin: 20px;
             list-style-position: inside;
@@ -60,14 +51,14 @@
 
         ul.a {
             list-style-type: upper-roman;
-            background-color: #FFFFFF; 
-            color: #000000; 
+            background-color: #FFFFFF;
+            color: #000000;
         }
 
         ul.b {
             list-style-type: lower-alpha;
-            background-color: #A3A3A3; 
-            color: #000000; 
+            background-color: #A3A3A3;
+            color: #000000;
         }
 
         ul li {
@@ -75,15 +66,14 @@
         }
 
         ul.a li a {
-            color: #800080; 
+            color: #800080;
             text-decoration: none;
             font-weight: bold;
         }
 
-        
         .button {
             padding: 10px 20px;
-            background-color: #FF6347; 
+            background-color: #FF6347;
             color: #FFFFFF;
             border: none;
             border-radius: 8px;
@@ -92,10 +82,14 @@
             margin: 20px;
         }
 
-        .button:hover {
-            background-color: #FF4500;
-        }
+            .button:hover {
+                background-color: #FF4500;
+            }
 
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -105,6 +99,7 @@
         <div class="info">
             <p id="numePrenume"><strong>Nume si Prenume:</strong> Tamas Nikolas</p>
             <p><strong>Email:</strong> nikolas20052701@gmail.com</p>
+            <p id="birthYear" onmouseover="afiseazaVarsta()">Anul Nașterii: 2005</p>
         </div>
     </div>
 
@@ -130,48 +125,64 @@
         </ul>
     </div>
 
-    <!-- Butonul pentru schimbare -->
+    <div class="email-input">
+        <label for="email">Introdu adresa de email:</label>
+        <input type="text" id="email" placeholder="exemplu@domeniu.com" onblur="valideazaEmail()">
+        <p id="error-msg" class="error"></p>
+    </div>
+
     <button class="button" onclick="schimbaViata()">Alta viata</button>
 
     <script>
         function schimbaViata() {
-            
             document.getElementById('numePrenume').innerHTML = "<strong>Poziția visată:</strong> Dezvoltator Software Junior la EA Romania";
-
             document.querySelector('.citat p').innerHTML = "<strong>Citat inspirational:</strong> “Viitorul apartine celor care cred in frumusețea viselor lor.”";
-
-            document.getElementById('profilImage').src = "Stitch2.jpg"; 
+            document.getElementById('profilImage').src = "Stitch2.jpg";
             document.getElementById('profilImage').style.opacity = 0.7;
-            document.getElementById('profilImage').style.border = "5px solid #FF6347"; 
-
+            document.getElementById('profilImage').style.border = "5px solid #FF6347";
+            document.querySelector('.disciplina h2').innerHTML = "Task-uri de realizat";
             document.querySelector('.disciplina ul.a').innerHTML = `
-                <li><a href="#">Dezvoltare de jocuri Video</a></li>
-                <li><a href="#">Implementare nivel ridicat AI</a></li>
-                <li><a href="#">Creare de aplicatii</a></li>
-            `;
-			document.querySelector('.hobby ul.b').innerHTML = `
-                <li><a href="#">Calatorie in locuri exotice</a></li>
-                <li><a href="#">Participare la turnee de Jocuri video</a></li>
-                <li><a href="#">Construirea Calculatoarelor</a></li>
-				;
-
-            document.body.style.backgroundColor = "#2F4F4F"; 
+                    <li><a href="#">Dezvoltare de jocuri Video</a></li>
+                    <li><a href="#">Implementare nivel ridicat AI</a></li>
+                    <li><a href="#">Creare de aplicatii</a></li>
+                `;
+            document.querySelector('.hobby ul.b').innerHTML = `
+                    <li><a href="#">Calatorie in locuri exotice</a></li>
+                    <li><a href="#">Participare la turnee de Jocuri video</a></li>
+                    <li><a href="#">Construirea Calculatoarelor</a></li>
+                `;
+            document.body.style.backgroundColor = "#2F4F4F";
             document.body.style.color = "#FFFFFF";
-
-            var titluri = document.querySelectorAll('.disciplina h2');
-            titluri.forEach(function(titlu) {
-                titlu.style.color = "#FF6347";
-				  var titluri = document.querySelectorAll('.hobby h2');
-            titluri.forEach(function(titlu) {
+            var titluriDisciplina = document.querySelectorAll('.disciplina h2');
+            titluriDisciplina.forEach(function (titlu) {
                 titlu.style.color = "#FF6347";
             });
-
-            // Schimbarea stilurilor pentru liste
-            document.querySelectorAll('ul.a, ul.b').forEach(function(lista) {
-                lista.style.backgroundColor = "#2F4F4F"; 
-                lista.style.color = "#FFFFFF"; 
+            var titluriHobby = document.querySelectorAll('.hobby h2');
+            titluriHobby.forEach(function (titlu) {
+                titlu.style.color = "#FF6347";
+            });
+            document.querySelectorAll('ul.a, ul.b').forEach(function (lista) {
+                lista.style.backgroundColor = "#2F4F4F";
+                lista.style.color = "#FFFFFF";
                 lista.style.border = "2px solid #FF6347";
             });
+        }
+
+        function afiseazaVarsta() {
+            const birthYear = 2005;
+            const currentYear = new Date().getFullYear();
+            const age = currentYear - birthYear;
+            document.getElementById("birthYear").innerText = `Vârsta: ${age} ani`;
+        }
+
+        function valideazaEmail() {
+            const emailInput = document.getElementById("email").value;
+            const errorMsg = document.getElementById("error-msg");
+            if (emailInput.includes("@")) {
+                errorMsg.innerText = "";
+            } else {
+                errorMsg.innerText = "Adresa de email trebuie să conțină caracterul '@'.";
+            }
         }
     </script>
 

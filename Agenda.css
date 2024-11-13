@@ -1,4 +1,4 @@
-body {
+﻿body {
     background-color: #00ffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #000;
@@ -35,12 +35,61 @@ ol {
     }
 
         ol li a {
-            text-decoration: none; 
+            text-decoration: none;
             font-size: 20px;
-            color: #ff0000; 
+            color: #ff0000;
             padding: 10px 20px;
             background-color: #f0f4f8;
             border-radius: 10px;
             display: block;
             font-weight: bold;
         }
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+    text-align: center;
+}
+
+.profile-img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.slide p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4a90e2;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

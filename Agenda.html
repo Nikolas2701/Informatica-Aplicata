@@ -1,19 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <meta charset="UTF-8">
-	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	 <title>Agenda</title>
-	 <link rel="stylesheet" href="Agenda.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda</title>
+    <link rel="stylesheet" href="Agenda.css">
+    <script>
+        let slideIndex = 0;
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000); 
+        }
+
+        window.onload = function () {
+            showSlides();
+        };
+    </script>
 </head>
 <body>
-<div class="continut">
-<h1>CUPRINS</h1>
-<ol>
-<li><a href="file:///D:/CV/Fisa%20Personala-Tamas%20Nikolas.html">Tamas Nikolas</a></li>
-<li><a href="file:///C:/Users/nikol/AppData/Local/Temp/Rar$EXa19552.29040/Ia/Fisa%20Personala-%20Ruscanu%20Ioana.html">Ruscanu Ioana</a></li>
-<li><a href="file:///D:/CV/Cosmin_Irimiciuc.html">Irimiciuc Cosmin</a></li>
-</ol>
-</div>
+    <div class="continut">
+        <h1>CUPRINS</h1>
+
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <a href="file:///D:/CV/Fisa%20Personala-Tamas%20Nikolas.html">
+                    <img src="Stitch.jpg" alt="Tamas Nikolas" class="profile-img">
+                    <p>Tamas Nikolas</p>
+                </a>
+            </div>
+            <div class="slide fade">
+                <a href="file:///C:/Users/nikol/AppData/Local/Temp/Rar$EXa19552.29040/Ia/Fisa%20Personala-%20Ruscanu%20Ioana.html">
+                    <img src="meow.jpg" alt="Ruscanu Ioana" class="profile-img">
+                    <p>Ruscanu Ioana</p>
+                </a>
+            </div>
+            <div class="slide fade">
+                <a href="file:///D:/CV/Cosmin_Irimiciuc.html">
+                    <img src="Irimiciuc Cosmin.jpg" alt="Irimiciuc Cosmin" class="profile-img">
+                    <p>Irimiciuc Cosmin</p>
+                </a>
+            </div>
+        </div>
+
+        <ol>
+            <li><a href="file:///D:/CV/Fisa%20Personala-Tamas%20Nikolas.html">Tamas Nikolas</a></li>
+            <li><a href="file:///C:/Users/nikol/AppData/Local/Temp/Rar$EXa19552.29040/Ia/Fisa%20Personala-%20Ruscanu%20Ioana.html">Ruscanu Ioana</a></li>
+            <li><a href="file:///D:/CV/Cosmin_Irimiciuc.html">Irimiciuc Cosmin</a></li>
+        </ol>
+    </div>
 </body>
 </html>
